@@ -1,0 +1,34 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Cache / temp files
+cache/
+tmp/
+
+# Environment / secrets
+.env
+config/db.php
+
+# Uploads (if user-generated)
+uploads/
+
+# Composer (if you use it)
+vendor/
+composer.lock
+
+# PHPUnit
+.phpunit.result.cache
+
+# Backup files
+*.bak
+*.old
