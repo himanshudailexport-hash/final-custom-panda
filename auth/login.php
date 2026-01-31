@@ -5,23 +5,30 @@ session_start();
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
     $stmt = $conn->prepare(
-        "SELECT id, password FROM users WHERE email=?"
+        "SELECT id, password, email_verified FROM users WHERE email=?"
     );
     $stmt->bind_param("s", $_POST['email']);
     $stmt->execute();
     $user = $stmt->get_result()->fetch_assoc();
 
     if ($user && password_verify($_POST['password'], $user['password'])) {
-        session_regenerate_id(true);
-        $_SESSION['user_id'] = $user['id'];
-        header("Location: ../user/index.php");
-        exit;
-    }
 
-    $error = "Invalid email or password";
+        if (!$user['email_verified']) {
+            $error = "Please verify your email before logging in.";
+        } else {
+            session_regenerate_id(true);
+            $_SESSION['user_id'] = $user['id'];
+            header("Location: ../user/index.php");
+            exit;
+        }
+    } else {
+        $error = "Invalid email or password";
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,13 +150,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     required>
                             </div>
 
+
                             <div class="mb-3">
-                                <label class="form-label">Password</label>
-                                <input type="password"
-                                    name="password"
-                                    class="form-control"
-                                    required>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <label class="form-label mb-0">Password</label>
+                                    <a href="forgot-password.php" class="auth-link" style="font-size: 13px;">
+                                        Forgot password?
+                                    </a>
+                                </div>
+
+                                <div class="position-relative mt-1">
+                                    <input type="password"
+                                        name="password"
+                                        id="password"
+                                        class="form-control pe-5"
+                                        required>
+
+                                    <i class="fa-solid fa-eye position-absolute top-50 end-0 translate-middle-y me-3"
+                                        id="togglePassword"
+                                        style="cursor: pointer; color: var(--dark-gray);"></i>
+                                </div>
                             </div>
+
 
                             <button type="submit" class="btn btn-auth w-100">
                                 Login
@@ -171,6 +193,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <?php include '../components/Footer.php' ?>
+
+    <script>
+        const togglePassword = document.getElementById("togglePassword");
+        const passwordInput = document.getElementById("password");
+
+        togglePassword.addEventListener("click", function() {
+            const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+
+            this.classList.toggle("fa-eye");
+            this.classList.toggle("fa-eye-slash");
+        });
+    </script>
+
+
 </body>
 
 </html>

@@ -1,29 +1,96 @@
 <?php
 include "../config/db.php";
 
+require_once "../config/env.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require "../config/mailer/PHPMailer.php";
+require "../config/mailer/SMTP.php";
+require "../config/mailer/Exception.php";
+
 $error = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
+    $name  = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $hash  = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+    // 1️⃣ Generate email verification token
+    $token = bin2hex(random_bytes(32));
+    $tokenHash = hash('sha256', $token);
+    $expires = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+    // 2️⃣ Insert user as UNVERIFIED
     $stmt = $conn->prepare(
-        "INSERT INTO users (name,email,password) VALUES (?,?,?)"
+        "INSERT INTO users 
+        (name, email, password, email_verification_token, email_verification_expires) 
+        VALUES (?, ?, ?, ?, ?)"
     );
+
     $stmt->bind_param(
-        "sss",
-        $_POST['name'],
-        $_POST['email'],
-        $hash
+        "sssss",
+        $name,
+        $email,
+        $hash,
+        $tokenHash,
+        $expires
     );
 
     if ($stmt->execute()) {
-        header("Location: login.php");
+
+        // 3️⃣ Send verification email
+
+        $verifyLink = "http://localhost/custom-panda-main/auth/verify-email.php?token=$token";
+
+
+        $mail = new PHPMailer(true);
+
+        try {
+
+            
+
+
+            $mail->isSMTP();
+            $mail->Host = $_ENV['MAIL_HOST'];
+            $mail->SMTPAuth = true;
+            $mail->Username = $_ENV['MAIL_USERNAME'];
+            $mail->Password = $_ENV['MAIL_PASSWORD'];
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = $_ENV['MAIL_PORT'];
+
+            $mail->setFrom(
+                $_ENV['MAIL_FROM_EMAIL'],
+                $_ENV['MAIL_FROM_NAME']
+            );
+
+            $mail->addAddress($email, $name);
+            $mail->isHTML(true);
+            $mail->Subject = 'Verify your email';
+            $mail->Body = "
+                Hi $name,<br><br>
+                Please verify your email by clicking the link below:<br><br>
+                <a href='$verifyLink'>Verify Email</a><br><br>
+                This link expires in 24 hours.
+            ";
+
+            $mail->send();
+        } catch (Exception $e) {
+            error_log("Mailer Error: " . $mail->ErrorInfo);
+        }
+
+        // 4️⃣ Redirect to check-email page
+        header("Location: check-email.php");
         exit;
     }
 
     $error = "Email already exists";
 }
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,7 +244,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    
+
     <?php include '../components/footer.php' ?>
 
 </body>
