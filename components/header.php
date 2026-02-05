@@ -62,7 +62,7 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
         <form class="d-none d-lg-flex ms-3 position-relative"
             action="shop.php"
             method="GET"
-            style="max-width: 320px; width:100%;">
+            style="max-width: 400px; width:100%;">
 
             <div class="input-group">
                 <input type="text"

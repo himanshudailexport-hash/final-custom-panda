@@ -1,4 +1,22 @@
 <footer class="footer-section pt-5">
+
+    <div class="footer-newsletter mb-5">
+        <div class="newsletter-inner">
+            <div class="newsletter-text">
+                <h2>Join Our Newsletter</h2>
+                <p>
+                    Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.
+                </p>
+            </div>
+
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </div>
+
+
     <div class="container">
         <div class="row g-4">
 

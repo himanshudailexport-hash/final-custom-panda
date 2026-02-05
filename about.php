@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AAbout Custom Panda Store | Clothing Manufacturer from Bhiwandi Maharashtra</title>
+    <title>About Custom Panda Store | Clothing Manufacturer from Bhiwandi Maharashtra</title>
     <meta name="description" content="About Custom Panda Store, our journey, values, and focus on creating reliable, comfortable apparel for everyday wear.">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -14,6 +14,7 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                 </p>
 
                 <p>
-                    Our work approach is simple -  understand customer needs, produce comfortable clothing, and deliver dependable results every time. Today, we continue to expand with a strong base of satisfied customers and repeat orders across different markets.
+                    Our work approach is simple - understand customer needs, produce comfortable clothing, and deliver dependable results every time. Today, we continue to expand with a strong base of satisfied customers and repeat orders across different markets.
                 </p>
 
                 <div class="about-stats">
@@ -89,16 +90,25 @@
     </section>
     <section class="why-us">
         <div class="why-container">
+
             <h2>Why Choose Custom Panda</h2>
 
-            <ul>
-                <li><span>✔</span> Trend focused apparel collections designed to match current market demand and everyday clothing preferences consistently.</li>
-                <li><span>✔</span> Affordable clothing solutions offering good fabric quality, clean stitching, and reliable value for regular use.</li>
-                <li><span>✔</span> Comfortable fits created with attention to sizing, fabric feel, and long lasting wear performance.</li>
-                <li><span>✔</span> Timely order processing, smooth coordination, and dependable support throughout production and delivery stages.</li>
-            </ul>
+            <div class="why-content">
+                <ul>
+                    <li><span>✔</span> Trend focused apparel collections designed to match current market demand and everyday clothing preferences consistently.</li>
+                    <li><span>✔</span> Affordable clothing solutions offering good fabric quality, clean stitching, and reliable value for regular use.</li>
+                    <li><span>✔</span> Comfortable fits created with attention to sizing, fabric feel, and long lasting wear performance.</li>
+                    <li><span>✔</span> Timely order processing, smooth coordination, and dependable support throughout production and delivery stages.</li>
+                </ul>
+
+                <div class="why-image">
+                    <img src="assets/img/products/diaz-men-s-cotton-crew-neck-sweatshirt-sweater-men-high-neck-full-sleeve-winter-sweater-size-xl-color-royal-product-images-rvcem3cty7-0-202211301645.jpg" alt="Why Choose Custom Panda">
+                </div>
+            </div>
+
         </div>
     </section>
+
     <section class="journey">
         <h2>Journey of Our Brand</h2>
 

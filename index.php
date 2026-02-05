@@ -204,7 +204,7 @@ include 'config/db.php'
         </section>
 
 
-        <section class="py-5 stat-section " id="stats">
+        <section class="py-5 stat-section mb-2" id="stats">
             <div class="container">
                 <div class="row text-center g-4">
 
@@ -249,11 +249,11 @@ include 'config/db.php'
 
 
 
-        <section class="newsletter-section py-5 my-5">
+        <!-- <section class="newsletter-section py-5 my-5">
             <div class="container">
                 <div class="row align-items-center g-4">
 
-                    <!-- Text -->
+                    
                     <div class="col-lg-6 text-center text-lg-start fade-left">
                         <h4 class="fw-bold mb-2">Sign Up For Newsletters</h4>
                         <p class="mb-0">
@@ -262,7 +262,7 @@ include 'config/db.php'
                         </p>
                     </div>
 
-                    <!-- Form -->
+                    
                     <div class="col-lg-6 fade-right">
                         <form class="d-flex flex-column flex-sm-row gap-2">
                             <input type="email" class="form-control newsletter-input"
@@ -275,7 +275,7 @@ include 'config/db.php'
 
                 </div>
             </div>
-        </section>
+        </section> -->
 
     </div>
 

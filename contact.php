@@ -15,6 +15,22 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        :root {
+            --primary-yellow: #f9be08;
+            --secondary-yellow: #ffce00;
+            --white: #ffffff;
+            --off-white: #f9f8f4;
+            --light-gray: #dfdfd9;
+            --dark-black: #1a1a19;
+            --dark-sky: #088178;
+            --dark-gray: #555;
+        }
+
+        
+
+    </style>
 </head>
 
 <body>
