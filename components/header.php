@@ -1,6 +1,8 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+
+    $isLoggedIn = isset($_SESSION['user_id']);
 }
 
 
@@ -44,6 +46,62 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
         height: 40px;
         object-fit: cover;
         border-radius: 4px;
+    }
+
+
+
+    .user-dropdown {
+        border: none;
+        border-radius: 10px;
+        padding: 8px 0;
+        min-width: 190px;
+        background: #ffffff;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+
+    .user-dropdown-item {
+        font-size: 14px;
+        padding: 10px 18px;
+        color: #333;
+        transition: all 0.2s ease;
+    }
+
+
+    .user-dropdown-item:hover {
+        background: #f8f9fa;
+        color: #ffce00;
+    }
+
+
+    .user-dropdown-item.logout {
+        color: #dc3545;
+    }
+
+    .user-dropdown-item.logout:hover {
+        background: #ffe5e5;
+        color: #b02a37;
+    }
+
+
+    .dropdown-item.active,
+    .dropdown-item:active {
+        background: transparent !important;
+        color: inherit !important;
+    }
+
+    .user-icon.dropdown-toggle::after {
+        display: none ;
+    }
+
+
+
+    @media (max-width: 991px) {
+        .user-dropdown {
+            position: static !important;
+            box-shadow: none;
+            border-radius: 0;
+        }
     }
 </style>
 
@@ -143,11 +201,58 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
                 </li>
 
                 <!-- User -->
-                <li class="nav-item ms-lg-3">
+                <!-- <li class="nav-item ms-lg-3">
                     <a class="nav-link user-icon" href="#">
                         <i class="fa-solid fa-circle-user"></i>
                     </a>
+                </li> -->
+
+                <li class="nav-item dropdown ms-lg-3">
+                    <a class="nav-link user-icon dropdown-toggle"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </a>
+
+
+
+                    <ul class="dropdown-menu dropdown-menu-end shadow user-dropdown">
+
+                        <?php if (!$isLoggedIn) { ?>
+                            <li>
+                                <a class="dropdown-item user-dropdown-item" href="auth/login.php">
+                                    Login
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item user-dropdown-item" href="auth/sign-up.php">
+                                    Sign Up
+                                </a>
+                            </li>
+                        <?php } else { ?>
+                            <li>
+                                <a class="dropdown-item user-dropdown-item" href="user/index.php">
+                                    My Account
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item user-dropdown-item" href="user/profile.php">
+                                    Update Details
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item user-dropdown-item logout" href="auth/logout.php">
+                                    Logout
+                                </a>
+                            </li>
+                        <?php } ?>
+
+                    </ul>
+
                 </li>
+
 
             </ul>
         </div>

@@ -350,120 +350,10 @@ body {
   top: 0;
 }
 
-/*=======================================================
-  Hero section 
-=========================================================*/
-
-#hero {
-  background-image: url("../img/banner/IndianSpices.png");
-  height: 90vh;
-  width: 100%;
-  background-color: #e3e6f3;
-  /* background-color: linear-gradient(180deg , var(--pink-blush),var(--blue-powder)); */
-  background-size: cover;
-  background-position: top 90% right 0;
-  padding: 0 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-#hero h4 {
-  color: #474242;
-}
-
-.fa-bolt {
-  color: #fecb00;
-  padding-right: 30px;
-}
-
-#hero h4 {
-  padding-bottom: 15px;
-}
-
-#hero h1 {
-  color: #088178;
-}
-
-#hero button {
-  background-image: url("./img/banner/show-btn.png");
-  background-size: cover;
-  background-position: center;
-  background-color: transparent;
-  color: #088178;
-  border: 0;
-  padding: 14px 80px 14px 65px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-}
 
 /*==============================================================
     Category features 
 ================================================================*/
-
-/* #feature {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 15px;
-}
-
-#feature .fe-box {
-    width: 180px;
-    text-align: center;
-    padding: 4px 4px;
-    border: 1px solid #cce7d0;
-    border-radius: 5px;
-    margin: 15px 0;
-}
-
-#feature .fe-box:hover {
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-}
-
-#feature .fe-box h6 {
-    display: inline-block;
-    padding: 9px 8px 6px 8px;
-    line-height: 1;
-    border-radius: 4px;
-    color: #088178;
-    background-color: #fddde4;
-}
-
-#feature .fe-box img {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-#feature .fe-box:nth-child(2) h6 {
-    background-color: #cdebbc;
-}
-
-#feature .fe-box:nth-child(3) h6 {
-    background-color: #d1e8f2;
-}
-
-#feature .fe-box:nth-child(4) h6 {
-    background-color: #cdd4f8;
-}
-
-#feature .fe-box:nth-child(5) h6 {
-    background-color: #f6dbf6;
-}
-
-#feature .fe-box:nth-child(6) h6 {
-    background-color: #fff2e5;
-} */
-
-/* ============================= */
-/* FEATURE CATEGORY SECTION */
-/* ============================= */
-
 #feature {
   display: flex;
   align-items: center;
@@ -554,7 +444,7 @@ body {
 
   #feature .fe-box {
     width: 160px;
-    height: 210px;
+    height: 190px;
   }
 
   #feature .fe-box img {
@@ -570,12 +460,20 @@ body {
 @media (max-width: 576px) {
   #feature .fe-box {
     width: 100%;
-    max-width: 280px;
-    height: auto;
+    max-width: 120px;
+    height: 160px;
+    padding: 4px ;
+    
   }
 
   #feature .fe-box img {
-    height: 160px;
+    height: 120px;
+    padding: 2px;
+  }
+
+  #feature .fe-box h6 {
+    font-size: 12px;
+    padding:  4px 10px;
   }
 }
 
@@ -756,14 +654,15 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url("../img/banner/short-banner.png");
+  background-image: url("../img/short-banner-1.png");
   /* background-color: linear-gradient(170deg , var(--pink-blush),var(--blue-powder)); */
   width: 100%;
   height: 40vh;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid black;
+  border: 1px solid var(--light-gray);
+  /* margin: 0 16px; */
 }
 
 #banner h4 {
@@ -796,7 +695,7 @@ body {
 }
 
 .banner-wrapper {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 40px 15px;
 }
@@ -819,7 +718,7 @@ body {
 }
 
 .banner-box {
-  background-image: url("../img/banner/IndianSpices.png");
+  background-image: url("../img/short-banner-2.png");
   background-size: cover;
   background-position: center;
   padding: 30px;
@@ -833,7 +732,7 @@ body {
   border-radius: 8px;
   color: #000;
 
-  border: 1px solid black;
+  border: 1px solid var(--light-gray);
 }
 
 @media (max-width: 768px) {
@@ -1907,10 +1806,10 @@ body {
 
 /* ================= HERO ================= */
 .about-hero {
-  height: 60vh;
+  height: 40vh;
   background:
     linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.2)),
-    url("../img/banner/short-banner.png") center / cover no-repeat;
+    url("../img/short-banner-1.png") center / cover no-repeat;
   /* background:
     linear-gradient(rgba(248, 210, 210, 0.65), rgba(58, 53, 53, 0.2)),
     url("../img/banner/short-banner.png") center / cover no-repeat; */
@@ -1937,7 +1836,7 @@ body {
 
 /* ================= ABOUT SECTION ================= */
 .about-fashion {
-  padding: 100px 8%;
+  padding: 40px 8%;
   background: var(--white);
 }
 

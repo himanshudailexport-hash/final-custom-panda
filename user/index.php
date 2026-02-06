@@ -88,7 +88,7 @@ if (!$user) {
 <div class="container my-5">
     <div class="row g-4">
 
-        <!-- LEFT: USER DETAILS -->
+        <a href="../index.php" class="text-center">Shop more</a>
         <!-- LEFT: USER DETAILS -->
         <div class="col-lg-4">
             <div class="dashboard-card text-center">

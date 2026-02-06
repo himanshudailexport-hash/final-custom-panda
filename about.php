@@ -60,7 +60,7 @@
             </div>
 
             <div class="about-image">
-                <img src="assets/img/products/diaz-men-s-cotton-crew-neck-sweatshirt-sweater-men-high-neck-full-sleeve-winter-sweater-size-xl-color-royal-product-images-rvcem3cty7-0-202211301645.jpg">
+                <img src="assets/img/1.png">
             </div>
 
         </div>
@@ -94,6 +94,11 @@
             <h2>Why Choose Custom Panda</h2>
 
             <div class="why-content">
+
+                <div class="why-image">
+                    <img src="assets/img/2.png" alt="Why Choose Custom Panda">
+                </div>
+
                 <ul>
                     <li><span>✔</span> Trend focused apparel collections designed to match current market demand and everyday clothing preferences consistently.</li>
                     <li><span>✔</span> Affordable clothing solutions offering good fabric quality, clean stitching, and reliable value for regular use.</li>
@@ -101,9 +106,7 @@
                     <li><span>✔</span> Timely order processing, smooth coordination, and dependable support throughout production and delivery stages.</li>
                 </ul>
 
-                <div class="why-image">
-                    <img src="assets/img/products/diaz-men-s-cotton-crew-neck-sweatshirt-sweater-men-high-neck-full-sleeve-winter-sweater-size-xl-color-royal-product-images-rvcem3cty7-0-202211301645.jpg" alt="Why Choose Custom Panda">
-                </div>
+
             </div>
 
         </div>

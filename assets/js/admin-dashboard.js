@@ -27,7 +27,7 @@ document.addEventListener("submit", function (e) {
     fetch("products/add_action.php", {
       method: "POST",
       body: formData,
-    })
+    }) 
       .then((res) => res.json())
       .then((data) => {
         msg.textContent = data.message;
