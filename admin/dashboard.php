@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +25,7 @@
 
                 <ul class="nav flex-column gap-1">
 
-                    <!-- Dashboard (no dropdown) -->
+                    
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
                             <i class="fa-solid fa-chart-line"></i>
@@ -31,7 +34,7 @@
                     </li>
 
 
-                    <!-- Users -->
+                 
                     <li class="nav-item dropdown-item">
                         <a class="nav-link dropdown-toggle" href="#">
                             <i class="fa-solid fa-user"></i>
@@ -62,12 +65,12 @@
                             <i class="fa-solid fa-chevron-down arrow"></i>
                         </a>
                         <ul class="submenu">
-                            <li><a href="#">Manage Category</a></li>
-                            <li><a href="#">Add Category</a></li>
+                            <li><a href="#" class="load-page" data-page="categories/add.php">Add Category</a></li>
+                            <li><a href="#" class="load-page" data-page="categories/category-list.php">Manage Category</a></li>
                         </ul>
                     </li>
 
-                    <!-- Products -->
+                    
                     <li class="nav-item dropdown-item">
                         <a class="nav-link dropdown-toggle" href="#">
                             <i class="fa-solid fa-box"></i>
@@ -80,8 +83,28 @@
                             </a></li>
 
                             <li>
-                                <a href="products/add.php" class="load-page" data-page="products/add.php">
+                                <a href="#" class="load-page" data-page="products/add.php">
                                     Add Product
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown-item">
+                        <a class="nav-link dropdown-toggle" href="#">
+                            <i class="fa-solid fa-box"></i>
+                            <span>Blogs</span>
+                            <i class="fa-solid fa-chevron-down arrow"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#" class="load-page" data-page="blog-management.php">
+                                    All Blogs
+                            </a></li>
+
+                            <li>
+                                <a href="#" class="load-page" data-page="add-blog.php">
+                                    Add Blog
                                 </a>
                             </li>
 
@@ -115,7 +138,7 @@
                         </ul>
                     </li>
 
-                    <!-- Settings (no dropdown) -->
+                    
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fa-solid fa-gear"></i>
@@ -123,6 +146,13 @@
                         </a>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="auth/logout.php">
+                            <i class="fa-solid fa-gear"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </li>
                 </ul>
             </aside>
             <!-- TOPBAR -->
@@ -140,7 +170,7 @@
             <!-- MAIN -->
 
             <main class="col-lg-10 col-md-9 p-4 main" id="main-content">
-                <!-- HERO -->
+                
                 <div class="row mb-4 mt-2">
                     <div class="col-12">
                         <div class="hero d-flex justify-content-between align-items-center">
@@ -153,7 +183,7 @@
                     </div>
                 </div>
 
-                <!-- STATS -->
+               
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6">
                         <div class="stat-card">
@@ -200,7 +230,7 @@
                 <div class="container-fluid">
                     <div class="row g-4">
 
-                        <!-- Sales Overview -->
+                        
                         <div class="col-lg-8">
                             <div class="card admin-card">
                                 <h5 class="card-title mb-4">Sales overview</h5>
@@ -237,7 +267,7 @@
                             </div>
                         </div>
 
-                        <!-- Balance -->
+                       
                         <div class="col-lg-4">
                             <div class="card admin-card">
                                 <h6>Current balance</h6>
@@ -256,10 +286,10 @@
                             </div>
                         </div>
 
-                        <!-- Best Salesman -->
+                        
                         <div class="col-lg-8">
                             <div class="card admin-card">
-                                <h5 class="card-title">Best salesman</h5>
+                                <h5 class="card-title">Best sales Products</h5>
 
                                 <table class="table align-middle mt-3 admin-table">
                                     <thead>
@@ -298,7 +328,7 @@
                             </div>
                         </div>
 
-                        <!-- Latest Products -->
+                        
                         <div class="col-lg-4">
                             <div class="card admin-card">
                                 <h5 class="card-title">Latest products</h5>
@@ -393,7 +423,7 @@
         });
     </script>
 
-    <!-- drop down -->
+    
     <script>
         document.querySelectorAll('.dropdown-toggle').forEach(item => {
             item.addEventListener('click', e => {

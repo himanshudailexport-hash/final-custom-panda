@@ -15,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $color          = $_POST['color'];
     $size           = $_POST['size'];
     $description    = $_POST['description'];
-    $net_quantity   = $_POST['net_quantity'];
+    // $net_quantity   = $_POST['net_quantity'];
     $fabric         = $_POST['fabric'];
-    $total_amount   = $_POST['total_amount'];
+    // $total_amount   = $_POST['total_amount'];
     $rating     = $_POST['rating'];
 
     $new_arrivals = $_POST['new_arrivals'];
@@ -47,15 +47,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("
         INSERT INTO products 
         (name, category_id, price, stock, discount_price, sku_id, color, size, description,
-         net_quantity, fabric, total_amount,
+          fabric, 
          new_arrivals, best_sales, trending,
          brand_name, rating,
          img1, img2, img3, img4)
-        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
     ");
 
     $stmt->bind_param(
-        "siiiissssisdiiisdssss",
+        "siiiisssssiiisdssss",
         $name,
         $category_id,
         $price,
@@ -65,9 +65,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $color,
         $size,
         $description,
-        $net_quantity,
+        // $net_quantity,
         $fabric,
-        $total_amount,
+        // $total_amount,
         $new_arrivals,
         $best_sales,
         $trending,

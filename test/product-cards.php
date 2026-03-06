@@ -2,9 +2,7 @@
 if (!isset($conn)) {
     include __DIR__ . "../config/db.php";
 }
-if (!isset($whereSQL)) {
-    $whereSQL = "";
-}
+
 $sql = "
     SELECT 
         p.id,
@@ -22,7 +20,6 @@ $sql = "
     ORDER BY p.id DESC
 ";
 
-
 $stmt = $conn->prepare($sql);
 
 if (!empty($params)) {
@@ -38,7 +35,7 @@ $productQuery = $stmt->get_result();
 
 <section id="product1" class="section-p1">
     <div class="container">
-
+        
         <div class="row g-4 pro-container">
 
             <?php while ($row = $productQuery->fetch_assoc()) { ?>
@@ -46,9 +43,10 @@ $productQuery = $stmt->get_result();
                 <div class="col-lg-3 col-md-4 col-6">
 
                     <div class="pro"
+                        data-id="<?= $row['id']; ?>"
                         data-price="<?= $row['price']; ?>"
                         data-rating="<?= $row['rating']; ?>"
-                        data-id="<?= $row['id']; ?>">
+                        data-category="<?= strtolower($row['category_name']); ?>">
 
                         <a href="product-detail-page.php?id=<?= $row['id']; ?>">
                             <img src="uploads/products/<?= htmlspecialchars($row['img1']); ?>"

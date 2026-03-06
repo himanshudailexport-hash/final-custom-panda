@@ -68,7 +68,7 @@ include 'config/db.php'
     </section>
 
     <section id="banner" class="section-m1">
-        <h4>Repair Services</h4>
+        <h4>Custom Designs</h4>
         <h2>Up to <span>60% Off</span> - All t-Shirts & Accessories</h2>
         <button class="normal">Explore More</button>
     </section>

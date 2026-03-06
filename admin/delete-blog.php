@@ -1,6 +1,6 @@
 <?php
 // admin/delete.php
-include 'admin-auth.php';
+
 require_once __DIR__ . '/../config/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

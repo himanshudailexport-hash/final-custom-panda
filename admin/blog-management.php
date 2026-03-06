@@ -1,6 +1,6 @@
 <?php
 // admin/index.
-include 'admin-auth.php';
+
 require_once __DIR__ . '/../config/db.php';
 
 $res = $conn->query("SELECT id, blogtitle, slug, blog_image, created_at FROM blogs ORDER BY created_at DESC");

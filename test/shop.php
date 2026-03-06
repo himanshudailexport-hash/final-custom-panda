@@ -1,21 +1,21 @@
 <?php
 include __DIR__ . "/config/db.php";
 
-/* Fetch Categories */
 $categoryQuery = $conn->query("
     SELECT id, name 
     FROM categories 
     ORDER BY name ASC
 ");
 
-$search   = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
 $category = isset($_GET['category']) ? trim($_GET['category']) : '';
 
-$where  = [];
+$where = [];
 $params = [];
-$types  = "";
+$types = "";
 
-/* SEARCH FILTER */
+/* SEARCH */
 if (!empty($search)) {
     $where[] = "(p.name LIKE ? OR p.brand_name LIKE ? OR p.description LIKE ? OR p.sku_id LIKE ?)";
     $searchTerm = "%{$search}%";
@@ -23,14 +23,16 @@ if (!empty($search)) {
     $types .= "ssss";
 }
 
-/* CATEGORY FILTER (BACKEND) */
+/* CATEGORY */
 if (!empty($category) && $category !== 'all') {
-    $where[] = "p.category_id = ?";
-    $params[] = (int)$category;
-    $types .= "i";
+    $where[] = "LOWER(c.name) = ?";
+    $params[] = strtolower($category);
+    $types .= "s";
 }
 
 $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
+
+
 ?>
 
 
@@ -73,11 +75,11 @@ $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
                             <option value="all">All Categories</option>
 
                             <?php while ($cat = $categoryQuery->fetch_assoc()) { ?>
-                                <option value="<?= $cat['id']; ?>"
-                                    <?= ($category == $cat['id']) ? 'selected' : '' ?>>
+                                <option value="<?= strtolower($cat['name']); ?>">
                                     <?= htmlspecialchars($cat['name']); ?>
                                 </option>
                             <?php } ?>
+
                         </select>
                     </div>
 
@@ -105,21 +107,27 @@ $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-
             const categoryFilter = document.getElementById("categoryFilter");
             const sortFilter = document.getElementById("productSort");
             const productContainer = document.querySelector(".pro-container");
 
-            if (!productContainer) return;
+            if (!categoryFilter || !sortFilter || !productContainer) return;
 
             const productCols = Array.from(productContainer.children);
 
-            function sortProducts() {
+            function filterAndSortProducts() {
+                const selectedCategory = categoryFilter.value;
                 const selectedSort = sortFilter.value;
 
-                let products = [...productCols];
+                let filtered = productCols.filter((col) => {
+                    const product = col.querySelector(".pro");
+                    return (
+                        selectedCategory === "all" ||
+                        product.dataset.category === selectedCategory
+                    );
+                });
 
-                products.sort((a, b) => {
+                filtered.sort((a, b) => {
                     const A = a.querySelector(".pro").dataset;
                     const B = b.querySelector(".pro").dataset;
 
@@ -138,20 +146,43 @@ $whereSQL = count($where) ? "WHERE " . implode(" AND ", $where) : "";
                 });
 
                 productContainer.innerHTML = "";
-                products.forEach(col => productContainer.appendChild(col));
+
+                if (!filtered.length) {
+                    productContainer.innerHTML = `
+        <div class="col-12 text-center py-5 text-muted">
+          No products found
+        </div>`;
+                    return;
+                }
+
+                filtered.forEach((col) => productContainer.appendChild(col));
             }
 
-            /* Redirect when category changes (Backend filter) */
+            //  read category from URL
+            const params = new URLSearchParams(window.location.search);
+            const categoryFromURL = params.get("category");
+
+            if (categoryFromURL) {
+                categoryFilter.value = categoryFromURL;
+            }
+
+            //  update URL on filter change
             categoryFilter.addEventListener("change", function() {
-                const selected = this.value;
-                if (selected === "all") {
-                    window.location.href = "shop.php";
+                const url = new URL(window.location);
+
+                if (this.value === "all") {
+                    url.searchParams.delete("category");
                 } else {
-                    window.location.href = "shop.php?category=" + selected;
+                    url.searchParams.set("category", this.value);
                 }
+
+                window.history.pushState({}, "", url);
+                filterAndSortProducts();
             });
 
-            sortFilter.addEventListener("change", sortProducts);
+            sortFilter.addEventListener("change", filterAndSortProducts);
+
+            filterAndSortProducts();
         });
     </script>
 

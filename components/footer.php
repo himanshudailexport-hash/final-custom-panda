@@ -1,5 +1,4 @@
 <footer class="footer-section pt-5">
-
     <div class="footer-newsletter mb-5">
         <div class="newsletter-inner">
             <div class="newsletter-text">
@@ -24,6 +23,17 @@
             <div class="col-lg-4 col-md-6 footer-col">
                 <a href="#"><img src="assets/img/logo/logo.png" alt="logo" class="footer-logo mb-3"></a>
                 <p>Custom Panda Store is a garment manufacturing brand offering comfortable and practical clothing for everyday use. We focus on consistent quality, proper fit, and reliable production for regular and bulk requirements.</p>
+                <div class="w-75 mt-4">
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        var tlJsHost = ((window.location.protocol == "https:") ? "https://secure.trust-provider.com/" : "http://www.trustlogo.com/");
+                        document.write(unescape("%3Cscript src='" + tlJsHost + "trustlogo/javascript/trustlogo.js' type='text/javascript'%3E%3C/script%3E"));
+                        //]]>
+                    </script>
+                    <script language="JavaScript" type="text/javascript">
+                        TrustLogo("https://www.positivessl.com/images/seals/positivessl_trust_seal_md_167x42.png", "POSDV", "none");
+                    </script>
+                </div>
 
             </div>
 

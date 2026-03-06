@@ -91,7 +91,7 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
     }
 
     .user-icon.dropdown-toggle::after {
-        display: none;
+        display: none ;
     }
 
 
@@ -160,13 +160,9 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
                         <i class="fa-solid fa-chevron-down dropdown-icon"></i>
                     </a>
                     <ul class="category-menu">
-                        <?php
-                        $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name ASC");
-
-                        while ($cat = $navCategories->fetch_assoc()) {
-                        ?>
+                        <?php while ($cat = $navCategories->fetch_assoc()) { ?>
                             <li>
-                                <a href="shop.php?category=<?= $cat['id']; ?>">
+                                <a href="shop.php?category=<?= urlencode(strtolower($cat['name'])); ?>">
                                     <?= htmlspecialchars($cat['name']); ?>
                                 </a>
                             </li>
@@ -191,14 +187,6 @@ $navCategories = $conn->query("SELECT id, name FROM categories ORDER BY name DES
 
                 <li class="nav-item">
                     <a class="nav-link" href="contact.php">Contact</a>
-                </li>
-
-
-                <li class="nav-item ms-lg-3">
-                    <a href="wishlist.php" class="position-relative wish-icon">
-                        <i class="fa-regular fa-heart"></i>
-                        <span id="wishlist-count" class="wishlist-count-badge">0</span>
-                    </a>
                 </li>
 
                 <!-- Cart -->

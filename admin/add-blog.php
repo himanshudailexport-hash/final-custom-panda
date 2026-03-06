@@ -1,6 +1,6 @@
 <?php
 // admin/add.php
-include 'admin-auth.php';
+
 include "../config/db.php";
 include "helpers.php";
 

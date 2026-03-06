@@ -137,7 +137,7 @@
                     <a href="#"><i class="bi bi-bag"></i> Categories</a>
                     <ul>
                         <li> <a href="categories/add.php">Create</a></li>
-                        <li> <a href="categories/all-categories.php">Manage</a> </li>
+                        <li> <a href="categories/category-list.php">Manage</a> </li>
                     </ul>
                 </li>
                 <li>
@@ -224,10 +224,10 @@
             </div>
 
             <!-- Products Table -->
-            <div class="card mt-4 shadow-sm">
+            <!-- <div class="card mt-4 shadow-sm">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5>Products</h5>
-                    <!-- <button class="btn btn-primary btn-sm">+ Add Product</button> -->
+                    
                     <a href="add-product.html" class="btn btn-primary btn-sm">
                         + Add Product
                     </a>
@@ -271,7 +271,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>

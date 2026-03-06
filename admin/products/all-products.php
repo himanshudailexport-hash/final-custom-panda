@@ -1,6 +1,8 @@
 <?php
 require_once "../../config/db.php";
 
+
+
 $result = $conn->query("
   SELECT p.*, c.name AS category_name
   FROM products p
@@ -37,7 +39,7 @@ $result = $conn->query("
             
             <td>
               <?php if (!empty($row['img1'])) { ?>
-                <img src="../uploads/products/<?= $row['img1']; ?>" alt="">
+                <img src="../uploads/products/<?= htmlspecialchars($row['img1']); ?>" width="60">
               <?php } else { ?>
                 No Image
               <?php } ?>
@@ -58,7 +60,7 @@ $result = $conn->query("
               </a>
             </td>
             <td>
-              <a href="../products/delete-product.php?id=<?= $row['id']; ?>"
+              <a href="products/delete-product.php?id=<?= $row['id']; ?>"
                  onclick="return confirm('Are you sure?')">
                 Delete
               </a>

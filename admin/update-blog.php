@@ -3,6 +3,7 @@
 
 
 include "../config/db.php";
+
 include "helpers.php";
 
 $id = intval($_GET['id'] ?? 0);
